@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaulingMonkey.Manage.VMs", "MaulingMonkey.Manage.VMs\MaulingMonkey.Manage.VMs.csproj", "{F6DB1417-DD49-4BD1-9D10-325A232566C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleTest", "ExampleTest\ExampleTest.csproj", "{0AA2B503-5BA6-4090-83DB-FFEB1043C1D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{78A46970-2937-45B8-BA02-5EB1ECBDBCA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{C2076AA5-08B2-475F-9073-84ED8B606E4A}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{608E1E69-1F2E-4164-A16C-93BFC090C595}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6DB1417-DD49-4BD1-9D10-325A232566C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6DB1417-DD49-4BD1-9D10-325A232566C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6DB1417-DD49-4BD1-9D10-325A232566C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6DB1417-DD49-4BD1-9D10-325A232566C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AA2B503-5BA6-4090-83DB-FFEB1043C1D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AA2B503-5BA6-4090-83DB-FFEB1043C1D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AA2B503-5BA6-4090-83DB-FFEB1043C1D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AA2B503-5BA6-4090-83DB-FFEB1043C1D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A46970-2937-45B8-BA02-5EB1ECBDBCA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A46970-2937-45B8-BA02-5EB1ECBDBCA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A46970-2937-45B8-BA02-5EB1ECBDBCA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A46970-2937-45B8-BA02-5EB1ECBDBCA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
