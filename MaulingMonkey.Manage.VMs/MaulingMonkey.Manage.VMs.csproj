@@ -40,6 +40,8 @@
     <Compile Include="Exceptions\Exceptions.cs" />
     <Compile Include="Proc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VirtualBox\DeleteVm.cs" />
+    <Compile Include="VirtualBox\CloneVm.cs" />
     <Compile Include="VirtualBox\ListVms.cs" />
     <Compile Include="VirtualBox\Paths.cs" />
     <Compile Include="VirtualBox\VmInfo.cs" />

@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="UnitTestCloneDelete.cs" />
     <Compile Include="UnitTestList.cs" />
     <Compile Include="UnitTestPaths.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
