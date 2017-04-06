@@ -18,10 +18,10 @@ using System.Threading.Tasks;
 
 namespace MaulingMonkey.Manage.VMs {
 	partial class VirtualBox {
-		public VmNameId CloneVm(VmNameId original                        ) { return CloneVm(original.Guid, new VmNameId() { Name = "Clone of "+original.Name, Guid = Guid.NewGuid().ToString() }); }
-		public VmNameId CloneVm(string   originalGuid                    ) { return CloneVm(originalGuid,  new VmNameId() { Name = "Clone of "+originalGuid , Guid = Guid.NewGuid().ToString() }); }
-		public VmNameId CloneVm(VmNameId original,     string   newName  ) { return CloneVm(original.Guid, new VmNameId() { Name = newName, Guid = Guid.NewGuid().ToString() }); }
-		public VmNameId CloneVm(string   originalGuid, string   newName  ) { return CloneVm(originalGuid,  new VmNameId() { Name = newName, Guid = Guid.NewGuid().ToString() }); }
+		public VmNameId CloneVm(VmNameId original                        ) { var guid = Guid.NewGuid().ToString(); return CloneVm(original.Guid, new VmNameId() { Name = $"Clone of {original.Name} {guid}", Guid = guid }); }
+		public VmNameId CloneVm(string   originalGuid                    ) { var guid = Guid.NewGuid().ToString(); return CloneVm(originalGuid,  new VmNameId() { Name = $"Clone of {originalGuid} {guid}" , Guid = guid }); }
+		public VmNameId CloneVm(VmNameId original,     string   newName  ) { var guid = Guid.NewGuid().ToString(); return CloneVm(original.Guid, new VmNameId() { Name = newName, Guid = guid }); }
+		public VmNameId CloneVm(string   originalGuid, string   newName  ) { var guid = Guid.NewGuid().ToString(); return CloneVm(originalGuid,  new VmNameId() { Name = newName, Guid = guid }); }
 		public VmNameId CloneVm(VmNameId original,     VmNameId newNameId) { return CloneVm(original.Guid, newNameId); }
 		public VmNameId CloneVm(string   originalGuid, VmNameId newNameId) {
 			if (VBoxManagePath == null) throw new MissingToolException("VBoxManage", VBoxManage_Paths);
