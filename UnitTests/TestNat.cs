@@ -17,7 +17,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
 namespace UnitTests {
-	[TestClass] public class UnitTestNat {
+	[TestClass] public class TestNat {
 		VirtualBox VBox = new VirtualBox();
 
 		[TestMethod] public void ModifyVm_NatForward_Delete() {

@@ -17,7 +17,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
 namespace UnitTests {
-	[TestClass] public class UnitTestList {
+	[TestClass] public class TestListVm {
 		VirtualBox VBox = new VirtualBox();
 
 		[TestMethod] public void Has_VMs() {

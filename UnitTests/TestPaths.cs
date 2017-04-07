@@ -17,7 +17,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 
 namespace UnitTests {
-	[TestClass] public class UnitTestPaths {
+	[TestClass] public class TestPaths {
 		VirtualBox VBox = new VirtualBox();
 
 		[TestMethod] public void Has_VBoxManage() { Assert.IsTrue(VBox.VBoxManagePath != null && File.Exists(VBox.VBoxManagePath)); }

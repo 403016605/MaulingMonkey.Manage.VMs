@@ -50,12 +50,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTestCloneDelete.cs" />
-    <Compile Include="UnitTestList.cs" />
-    <Compile Include="UnitTestNat.cs" />
-    <Compile Include="UnitTestPaths.cs" />
+    <Compile Include="TestCloneDelete.cs" />
+    <Compile Include="TestListVm.cs" />
+    <Compile Include="TestNat.cs" />
+    <Compile Include="TestPaths.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTestVmInfo.cs" />
+    <Compile Include="TestVmInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaulingMonkey.Manage.VMs\MaulingMonkey.Manage.VMs.csproj">

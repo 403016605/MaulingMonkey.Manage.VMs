@@ -17,7 +17,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
 namespace UnitTests {
-	[TestClass] public class UnitTestVmInfo {
+	[TestClass] public class TestVmInfo {
 		VirtualBox VBox = new VirtualBox();
 
 		[TestMethod] public void ListVms_Props_Consistent() {

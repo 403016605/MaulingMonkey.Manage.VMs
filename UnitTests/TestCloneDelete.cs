@@ -18,7 +18,7 @@ using System;
 using System.Linq;
 
 namespace UnitTests {
-	[TestClass] public class UnitTestCloneDelete {
+	[TestClass] public class TestCloneDelete {
 		VirtualBox VBox = new VirtualBox();
 
 		[TestMethod] public void Clone_Delete_VMs() {
