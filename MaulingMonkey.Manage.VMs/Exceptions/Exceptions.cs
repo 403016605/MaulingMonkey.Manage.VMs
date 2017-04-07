@@ -16,11 +16,11 @@ using System;
 using System.Collections.Generic;
 
 namespace MaulingMonkey.Manage.VMs {
-	class VmManagementException : Exception {
+	public class VmManagementException : Exception {
 		internal VmManagementException(string message): base(message) { }
 	}
 
-	class MissingToolException : VmManagementException {
+	public class MissingToolException : VmManagementException {
 		public string              ToolName { get; private set; }
 		public IEnumerable<string> SearchPaths { get; private set; }
 
@@ -30,7 +30,7 @@ namespace MaulingMonkey.Manage.VMs {
 		}
 	}
 
-	class ToolResultSyntaxException : VmManagementException {
+	public class ToolResultSyntaxException : VmManagementException {
 		public string ToolName    { get; private set; }
 		public string SyntaxError { get; private set; }
 

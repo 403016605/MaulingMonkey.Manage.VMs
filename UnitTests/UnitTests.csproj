@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="UnitTestCloneDelete.cs" />
     <Compile Include="UnitTestList.cs" />
+    <Compile Include="UnitTestNat.cs" />
     <Compile Include="UnitTestPaths.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestVmInfo.cs" />
