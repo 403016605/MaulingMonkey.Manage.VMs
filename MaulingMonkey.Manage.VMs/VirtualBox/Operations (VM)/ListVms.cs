@@ -27,11 +27,6 @@ namespace MaulingMonkey.Manage.VMs {
 		// "Ubuntu Desktop" {5a497ace-b8b3-400f-a576-e6a257322a41}
 		static readonly Regex reVbmListVms = new Regex(@"^""(?<name>.*)"" (?<guid>\{[-0-9a-fA-F]+\})$", RegexOptions.Compiled | RegexOptions.ExplicitCapture | RegexOptions.CultureInvariant);
 
-		public struct VmNameId {
-			public string Name, Guid;
-			public bool IsNull { get { return Name == null && Guid == null; } }
-		}
-
 		public IEnumerable<VmNameId> ListVms() {
 			if (VBoxManagePath == null) throw new MissingToolException("VBoxManage", VBoxManage_Paths);
 

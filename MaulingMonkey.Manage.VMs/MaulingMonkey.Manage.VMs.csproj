@@ -40,14 +40,16 @@
     <Compile Include="Exceptions\Exceptions.cs" />
     <Compile Include="Proc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VirtualBox\ControlVm.cs" />
-    <Compile Include="VirtualBox\ModifyVmNatPortForward.cs" />
-    <Compile Include="VirtualBox\StartVm.cs" />
-    <Compile Include="VirtualBox\DeleteVm.cs" />
-    <Compile Include="VirtualBox\CloneVm.cs" />
-    <Compile Include="VirtualBox\ListVms.cs" />
-    <Compile Include="VirtualBox\Paths.cs" />
-    <Compile Include="VirtualBox\VmInfo.cs" />
+    <Compile Include="VirtualBox\Operations %28VM%29\ControlVm.cs" />
+    <Compile Include="VirtualBox\Operations %28VM%29\ModifyVmNatPortForward.cs" />
+    <Compile Include="VirtualBox\Operations %28VM%29\StartVm.cs" />
+    <Compile Include="VirtualBox\Operations %28VM%29\DeleteVm.cs" />
+    <Compile Include="VirtualBox\Operations %28VM%29\CloneVm.cs" />
+    <Compile Include="VirtualBox\Operations %28VM%29\ListVms.cs" />
+    <Compile Include="VirtualBox\Core\Paths.cs" />
+    <Compile Include="VirtualBox\Types\VmId.cs" />
+    <Compile Include="VirtualBox\Types\VmNameId.cs" />
+    <Compile Include="VirtualBox\Operations %28VM%29\VmInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
