@@ -20,8 +20,7 @@ namespace MaulingMonkey.Manage.VMs {
 	partial class VirtualBox {
 		static readonly Regex reShowVmInfo_SimpleKeyValue = new Regex(@"^   ( ""(?<key>[^=]+)"" | (?<key>[^=]+) )   =   ( ""(?<value>.*)"" | (?<value>\d*) )   $", RegexOptions.Compiled | RegexOptions.ExplicitCapture | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.IgnorePatternWhitespace);
 
-		public IEnumerable<KeyValuePair<string,string>> VmInfo(VmNameId vnid) { return VmInfo(vnid.Guid); }
-		public IEnumerable<KeyValuePair<string,string>> VmInfo(string   guid) {
+		public IEnumerable<KeyValuePair<string,string>> VmInfo(VmId vm) {
 			if (VBoxManagePath == null) throw new MissingToolException("VBoxManage", VBoxManage_Paths);
 
 			var results = new List<KeyValuePair<string,string>>();
@@ -29,7 +28,7 @@ namespace MaulingMonkey.Manage.VMs {
 
 			// Parse the first half of the key/value pairs - e.g. before the possibly multi-line description key/value pair.
 			var preDescription = true;
-			var exit = Proc.ExecIn(null, VBoxManagePath, "showvminfo --machinereadable "+guid, stdout => {
+			var exit = Proc.ExecIn(null, VBoxManagePath, "showvminfo --machinereadable "+vm, stdout => {
 				if (preDescription) {
 					var m = reShowVmInfo_SimpleKeyValue.Match(stdout);
 					if      (m.Success)                            results.Add(new KeyValuePair<string, string>(m.Groups["key"].Value, m.Groups["value"].Value));
@@ -74,16 +73,13 @@ namespace MaulingMonkey.Manage.VMs {
 			return results;
 		}
 
-		public IEnumerable<KeyValuePair<string,string>> TryVmInfo(VmNameId vnid) { return TryVmInfo(vnid.Guid); }
-		public IEnumerable<KeyValuePair<string,string>> TryVmInfo(string guid) {
-			try { return VmInfo(guid); }
+		public IEnumerable<KeyValuePair<string,string>> TryVmInfo(VmId vm) {
+			try { return VmInfo(vm); }
 			catch (MissingToolException     ) { return new KeyValuePair<string,string>[0]; }
 			catch (ToolResultSyntaxException) { return new KeyValuePair<string,string>[0]; }
 		}
 
-		public Dictionary<string,string> VmInfoDictionary   (VmNameId vnid) { var d = new Dictionary<string,string>(); foreach (var kv in VmInfo(vnid)   ) d.Add(kv.Key, kv.Value); return d; }
-		public Dictionary<string,string> VmInfoDictionary   (string   guid) { var d = new Dictionary<string,string>(); foreach (var kv in VmInfo(guid)   ) d.Add(kv.Key, kv.Value); return d; }
-		public Dictionary<string,string> TryVmInfoDictionary(VmNameId vnid) { var d = new Dictionary<string,string>(); foreach (var kv in TryVmInfo(vnid)) d.Add(kv.Key, kv.Value); return d; }
-		public Dictionary<string,string> TryVmInfoDictionary(string   guid) { var d = new Dictionary<string,string>(); foreach (var kv in TryVmInfo(guid)) d.Add(kv.Key, kv.Value); return d; }
+		public Dictionary<string,string> VmInfoDictionary   (VmId vm) { var d = new Dictionary<string,string>(); foreach (var kv in VmInfo(vm)   ) d.Add(kv.Key, kv.Value); return d; }
+		public Dictionary<string,string> TryVmInfoDictionary(VmId vm) { var d = new Dictionary<string,string>(); foreach (var kv in TryVmInfo(vm)) d.Add(kv.Key, kv.Value); return d; }
 	}
 }

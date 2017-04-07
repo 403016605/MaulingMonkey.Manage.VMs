@@ -13,7 +13,6 @@
 // limitations under the License.
 
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace MaulingMonkey.Manage.VMs {
 	partial class VirtualBox {
@@ -47,10 +46,8 @@ namespace MaulingMonkey.Manage.VMs {
 			Separate
 		}
 
-		public void StartVm(VmNameId target                  ) { StartVm(target.Guid, StartVmType.Default); }
-		public void StartVm(string   target                  ) { StartVm(target     , StartVmType.Default); }
-		public void StartVm(VmNameId target, StartVmType type) { StartVm(target.Guid, type); }
-		public void StartVm(string   target, StartVmType type) {
+		public void StartVm(VmId vm                  ) { StartVm(vm, StartVmType.Default); }
+		public void StartVm(VmId vm, StartVmType type) {
 			var typeFlag = "";
 			switch (type) {
 			case StartVmType.Default:  break;
@@ -64,23 +61,11 @@ namespace MaulingMonkey.Manage.VMs {
 			//    Waiting for VM "OpenBSD 64-bit" to power on...
 			//    VM "OpenBSD 64-bit" has been successfully started.
 			// Note that the system has not finished booting by the time this returns!
-			var exit = Proc.ExecIn(null, VBoxManagePath, $"startvm {target} {typeFlag}", stdout => { }, stderr => { }, ProcessWindowStyle.Hidden);
+			var exit = Proc.ExecIn(null, VBoxManagePath, $"startvm {vm} {typeFlag}", stdout => { }, stderr => { }, ProcessWindowStyle.Hidden);
 			if (exit != 0) throw new ToolResultSyntaxException("VBoxManage startvm ...", "Returned nonzero");
 		}
 
-		public bool       TryStartVm     (VmNameId target                  ) { try { StartVm(target      ); return true; } catch (VmManagementException) { return false; } }
-		public bool       TryStartVm     (string   target                  ) { try { StartVm(target      ); return true; } catch (VmManagementException) { return false; } }
-		public bool       TryStartVm     (VmNameId target, StartVmType type) { try { StartVm(target, type); return true; } catch (VmManagementException) { return false; } }
-		public bool       TryStartVm     (string   target, StartVmType type) { try { StartVm(target, type); return true; } catch (VmManagementException) { return false; } }
-
-		public Task       StartVmAsync   (VmNameId target                  ) { return Task.Run(()=>StartVm(target      )); }
-		public Task       StartVmAsync   (string   target                  ) { return Task.Run(()=>StartVm(target      )); }
-		public Task       StartVmAsync   (VmNameId target, StartVmType type) { return Task.Run(()=>StartVm(target, type)); }
-		public Task       StartVmAsync   (string   target, StartVmType type) { return Task.Run(()=>StartVm(target, type)); }
-
-		public Task<bool> TryStartVmAsync(VmNameId target                  ) { return Task.Run(()=>TryStartVm(target      )); }
-		public Task<bool> TryStartVmAsync(string   target                  ) { return Task.Run(()=>TryStartVm(target      )); }
-		public Task<bool> TryStartVmAsync(VmNameId target, StartVmType type) { return Task.Run(()=>TryStartVm(target, type)); }
-		public Task<bool> TryStartVmAsync(string   target, StartVmType type) { return Task.Run(()=>TryStartVm(target, type)); }
+		public bool TryStartVm(VmId vm                  ) { try { StartVm(vm      ); return true; } catch (VmManagementException) { return false; } }
+		public bool TryStartVm(VmId vm, StartVmType type) { try { StartVm(vm, type); return true; } catch (VmManagementException) { return false; } }
 	}
 }

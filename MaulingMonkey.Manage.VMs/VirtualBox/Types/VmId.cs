@@ -16,8 +16,14 @@
 namespace MaulingMonkey.Manage.VMs {
 	partial class VirtualBox {
 		public struct VmId {
-			public string Id;
-			public static implicit operator VmId(VmNameId nameId) { return new VmId() { Id = nameId.Guid ?? nameId.Name }; }
+			string Id;
+
+			public VmId(VmNameId id) { Id = id.Guid ?? id.Name; }
+			public VmId(string   id) { Id = id; }
+			public static implicit operator VmId(VmNameId nameId) { return new VmId(nameId); }
+			public static explicit operator VmId(string id) { return new VmId(id); }
+
+			public static implicit operator string(VmId id) { return id.ToString(); }
 			public override string ToString() { return Id; }
 		}
 	}

@@ -14,7 +14,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace MaulingMonkey.Manage.VMs {
 	partial class VirtualBox {
@@ -48,12 +47,11 @@ namespace MaulingMonkey.Manage.VMs {
 			PowerOff,
 		}
 
-		public void ControlVm(VmNameId target, ControlVmType type) { ControlVm(target.Guid, type); }
-		public void ControlVm(string   target, ControlVmType type) {
+		public void ControlVm(VmId vm, ControlVmType type) {
 			string args = null;
 			switch (type) {
-			case ControlVmType.AcpiPowerButton: args = $"controlvm {target} acpipowerbutton"; break;
-			case ControlVmType.PowerOff:        args = $"controlvm {target} poweroff";        break;
+			case ControlVmType.AcpiPowerButton: args = $"controlvm {vm} acpipowerbutton"; break;
+			case ControlVmType.PowerOff:        args = $"controlvm {vm} poweroff";        break;
 			}
 			if (args == null) throw new ArgumentOutOfRangeException(nameof(type), "ControlVm passed invalid ControlVmType enumeration value");
 
@@ -61,11 +59,6 @@ namespace MaulingMonkey.Manage.VMs {
 			if (exit != 0) throw new ToolResultSyntaxException("VBoxManage controlvm ...", "Returned nonzero");
 		}
 
-		public bool       TryControlVm     (VmNameId target, ControlVmType type) { try { ControlVm(target, type); return true; } catch (VmManagementException) { return false; } }
-		public bool       TryControlVm     (string   target, ControlVmType type) { try { ControlVm(target, type); return true; } catch (VmManagementException) { return false; } }
-		public Task       ControlVmAsync   (VmNameId target, ControlVmType type) { return Task.Run(()=>ControlVm(target, type)); }
-		public Task       ControlVmAsync   (string   target, ControlVmType type) { return Task.Run(()=>ControlVm(target, type)); }
-		public Task<bool> TryControlVmAsync(VmNameId target, ControlVmType type) { return Task.Run(()=>TryControlVm(target, type)); }
-		public Task<bool> TryControlVmAsync(string   target, ControlVmType type) { return Task.Run(()=>TryControlVm(target, type)); }
+		public bool TryControlVm(VmId vm, ControlVmType type) { try { ControlVm(vm, type); return true; } catch (VmManagementException) { return false; } }
 	}
 }

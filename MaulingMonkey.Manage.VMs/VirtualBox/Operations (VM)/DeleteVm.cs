@@ -13,27 +13,18 @@
 // limitations under the License.
 
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace MaulingMonkey.Manage.VMs {
 	partial class VirtualBox {
-		public void DeleteVm(VmNameId target) { DeleteVm(target.Guid); }
-		public void DeleteVm(string   target) {
+		public void DeleteVm(VmId vm) {
 			if (VBoxManagePath == null) throw new MissingToolException("VBoxManage", VBoxManage_Paths);
 
 			// TODO:  More streamy stdout parser so we can sanely parse:
 			//      0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
-			var exit = Proc.ExecIn(null, VBoxManagePath, $"unregistervm --delete {target}", stdout => { }, stderr => { }, ProcessWindowStyle.Hidden);
+			var exit = Proc.ExecIn(null, VBoxManagePath, $"unregistervm --delete {vm}", stdout => { }, stderr => { }, ProcessWindowStyle.Hidden);
 			if (exit != 0) throw new ToolResultSyntaxException("VBoxManage unregistervm --delete ...", "Returned nonzero");
 		}
 
-		public bool       TryDeleteVm     (VmNameId target) { try { DeleteVm(target); return true; } catch (VmManagementException) { return false; } }
-		public bool       TryDeleteVm     (string   target) { try { DeleteVm(target); return true; } catch (VmManagementException) { return false; } }
-
-		public Task       DeleteVmAsync   (VmNameId target) { return Task.Run(()=>DeleteVm(target)); }
-		public Task       DeleteVmAsync   (string   target) { return Task.Run(()=>DeleteVm(target)); }
-
-		public Task<bool> TryDeleteVmAsync(VmNameId target) { return Task.Run(()=>TryDeleteVm(target)); }
-		public Task<bool> TryDeleteVmAsync(string   target) { return Task.Run(()=>TryDeleteVm(target)); }
+		public bool TryDeleteVm(VmId target) { try { DeleteVm(target); return true; } catch (VmManagementException) { return false; } }
 	}
 }
