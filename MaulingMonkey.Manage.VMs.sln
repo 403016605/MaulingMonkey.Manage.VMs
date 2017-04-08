@@ -19,6 +19,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{608E1E69-1F2E-4164-A16C-93BFC090C595}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		MaulingMonkey.Manage.VMs.nuspec = MaulingMonkey.Manage.VMs.nuspec
 	EndProjectSection
 EndProject
 Global

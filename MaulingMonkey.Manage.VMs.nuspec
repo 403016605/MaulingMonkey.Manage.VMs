@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>MaulingMonkey.Manage.VMs</id>
+		<version>0.0.0</version>
+		<authors>MaulingMonkey</authors>
+		<owners>MaulingMonkey</owners>
+		<licenseUrl>https://github.com/MaulingMonkey/MaulingMonkey.Manage.VMs/blob/master/LICENSE.txt</licenseUrl>
+		<projectUrl>https://github.com/MaulingMonkey/MaulingMonkey.Manage.VMs/</projectUrl>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<description>MaulingMonkey's .NET API for programatically managing (VirtualBox) VMs.
+
+Currently only VirtualBox VMs are supported, via it's command line interface, VBoxManage.
+
+This project is in no way affiliated with or supported by Oracle or the VirtualBox project.</description>
+		<releaseNotes>Initial release.</releaseNotes>
+		<copyright>Copyright © MaulingMonkey 2017</copyright>
+		<tags>vm VirtualBox VBoxManage</tags>
+	</metadata>
+	<files>
+		<file src="MaulingMonkey.Manage.VMs\bin\Release\**\*.*" target="lib\net45" />
+		<file src="MaulingMonkey.Manage.VMs\**\*.cs"             target="src"   />
+	</files>
+</package>
